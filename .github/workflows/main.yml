@@ -48,8 +48,4 @@ jobs:
           Write-Host "Password: P@ssw0rd123!"
           Write-Host "================================"
           
-      - name: Keep Alive
-        run: |
-          while($true) {
-            Start-Sleep -Seconds 60
-          }
+     
