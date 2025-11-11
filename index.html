@@ -8,36 +8,45 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
         
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --dark-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            --primary-gradient: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            --secondary-gradient: linear-gradient(135deg, #FF2D55 0%, #FF3B30 100%);
+            --accent-gradient: linear-gradient(135deg, #32D74B 0%, #30D158 100%);
+            --dark-bg: #000000;
+            --surface-bg: rgba(28, 28, 30, 0.8);
+            --surface-elevated: rgba(44, 44, 46, 0.8);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-tertiary: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glow-color: rgba(0, 122, 255, 0.3);
         }
         
         * {
-            letter-spacing: 0.01em;
+            letter-spacing: -0.011em;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Inter', system-ui, sans-serif;
             font-weight: 400;
-            line-height: 1.7;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            color: var(--text-primary);
+            overflow-x: hidden;
         }
         
         .gradient-bg {
             background: var(--dark-bg);
-            background-size: 200% 200%;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 122, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(88, 86, 214, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
         }
         
         .gradient-text {
@@ -46,61 +55,90 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 700;
+            letter-spacing: -0.022em;
         }
         
         .accent-text {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: -0.014em;
         }
         
         .heading-font {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
         }
         
         .service-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
         }
         
         .service-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
         }
         
         .service-card:hover::before {
-            left: 100%;
+            opacity: 1;
+        }
+        
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .service-card:hover::after {
+            opacity: 1;
         }
         
         .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
-            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-12px) scale(1.015);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 0 40px rgba(0, 122, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         
         .service-card:active {
-            transform: translateY(-4px) scale(1.01);
+            transform: translateY(-6px) scale(1.008);
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .fallback-box {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: var(--surface-elevated);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 280px;
-            border-radius: 16px;
-            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
         }
@@ -112,19 +150,20 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-            animation: pulse 3s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.15) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
         }
         
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.15); opacity: 0.7; }
         }
         
         .fallback-text {
-            color: #e2e8f0;
+            color: var(--text-primary);
             font-size: 1.125rem;
             font-weight: 600;
+            letter-spacing: -0.014em;
             position: relative;
             z-index: 1;
             display: flex;
@@ -134,30 +173,33 @@
         
         .fallback-icon {
             font-size: 1.5rem;
-            opacity: 0.7;
+            opacity: 0.8;
+            color: #007AFF;
         }
         
         img {
-            border-radius: 16px;
+            border-radius: 18px;
             width: 100%;
             height: auto;
-            transition: transform 0.4s ease;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: block;
+            position: relative;
+            z-index: 0;
         }
         
         .service-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
         
         .animate-fade-in {
-            animation: fadeInUp 0.8s ease-out forwards;
+            animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
             opacity: 0;
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -169,24 +211,32 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: var(--surface-elevated);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         
         .icon-wrapper:hover {
-            transform: rotate(5deg) scale(1.1);
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            transform: scale(1.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.3);
+        }
+        
+        .icon-wrapper i {
+            font-size: 1.75rem;
         }
         
         .divider-line {
-            height: 3px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: 1px;
             position: relative;
             overflow: hidden;
         }
@@ -198,8 +248,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--accent-gradient);
-            animation: shimmer 2s infinite;
+            background: linear-gradient(90deg, transparent, rgba(0, 122, 255, 0.6), transparent);
+            animation: shimmer 3s infinite;
         }
         
         @keyframes shimmer {
@@ -208,48 +258,108 @@
         }
         
         .footer-badge {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.8));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            transition: all 0.3s ease;
+            background: var(--surface-elevated);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
         
         .footer-badge:hover {
-            border-color: rgba(102, 126, 234, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
         }
         
         .section-title {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #94a3b8;
-            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+            margin-bottom: 2.5rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 1rem;
         }
         
         .section-title::after {
             content: '';
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, rgba(102, 126, 234, 0.3), transparent);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
         }
         
         .card-glow {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(102, 126, 234, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 0 1px var(--border-color);
         }
         
         .card-glow:hover {
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4), 0 0 0 1px rgba(102, 126, 234, 0.3);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                0 0 40px rgba(0, 122, 255, 0.2);
+        }
+        
+        /* Premium Typography Enhancements */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.022em;
+        }
+        
+        p {
+            letter-spacing: -0.011em;
+        }
+        
+        /* Enhanced Focus States */
+        a:focus-visible {
+            outline: 2px solid rgba(0, 122, 255, 0.6);
+            outline-offset: 4px;
+            border-radius: 12px;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Selection Styling */
+        ::selection {
+            background: rgba(0, 122, 255, 0.3);
+            color: white;
+        }
+        
+        ::-moz-selection {
+            background: rgba(0, 122, 255, 0.3);
+            color: white;
+        }
+        
+        /* Additional Premium Effects */
+        .service-card img {
+            filter: brightness(0.98);
+            transition: filter 0.5s ease;
+        }
+        
+        .service-card:hover img {
+            filter: brightness(1.05);
         }
         
         @media (max-width: 768px) {
             .heading-font {
-                font-size: 2rem;
+                font-size: 2.5rem;
+                letter-spacing: -0.02em;
+            }
+            
+            .icon-wrapper {
+                width: 56px;
+                height: 56px;
+            }
+            
+            .icon-wrapper i {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -258,57 +368,57 @@
     <!-- Main Container -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 max-w-7xl">
         <!-- Header Section -->
-        <header class="text-center mb-16 sm:mb-20 lg:mb-24 animate-fade-in">
-            <div class="flex justify-center mb-6">
+        <header class="text-center mb-20 sm:mb-24 lg:mb-32 animate-fade-in">
+            <div class="flex justify-center mb-8">
                 <div class="icon-wrapper">
-                    <i class="fas fa-star gradient-text text-2xl"></i>
+                    <i class="fas fa-sparkles gradient-text"></i>
                 </div>
             </div>
             
-            <h1 class="heading-font text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+            <h1 class="heading-font text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                 <span class="gradient-text">Recommended</span> Services
             </h1>
             
-            <p class="text-xl sm:text-2xl lg:text-3xl accent-text mb-6 font-semibold">
-                <i class="fas fa-language mr-2"></i>
+            <p class="text-xl sm:text-2xl lg:text-3xl accent-text mb-8 font-medium">
+                <i class="fas fa-language mr-3" style="color: var(--text-tertiary);"></i>
                 මාගේ නිර්දේශිත සේවාවන්
             </p>
             
-            <div class="w-32 sm:w-40 h-1 divider-line mx-auto mb-8"></div>
+            <div class="w-24 sm:w-32 h-px divider-line mx-auto mb-12"></div>
             
-            <div class="max-w-3xl mx-auto space-y-3">
-                <p class="text-lg sm:text-xl text-gray-200 font-medium leading-relaxed">
-                    <i class="fas fa-check-circle text-emerald-400 mr-2"></i>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <p class="text-lg sm:text-xl text-white font-medium leading-relaxed" style="letter-spacing: -0.011em;">
+                    <i class="fas fa-check-circle mr-3" style="color: #32D74B;"></i>
                     A curated collection of premium services and tools
                 </p>
-                <p class="text-base sm:text-lg text-gray-400 leading-relaxed">
-                    <i class="fas fa-hand-holding-heart text-purple-400 mr-2"></i>
+                <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary); letter-spacing: -0.011em;">
+                    <i class="fas fa-heart mr-3" style="color: #FF2D55;"></i>
                     මා විසින් ප්‍රයෝජනවත් යැයි සලකන සේවාවන් සහ මෙවලම් කිහිපයක්
                 </p>
             </div>
         </header>
 
         <!-- Services Grid -->
-        <main class="mb-16 sm:mb-20">
+        <main class="mb-20 sm:mb-24">
             <div class="section-title animate-fade-in" style="animation-delay: 0.2s;">
-                <i class="fas fa-th-large text-indigo-400"></i>
+                <i class="fas fa-th-large" style="color: #007AFF;"></i>
                 <span>Featured Services</span>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
                 <!-- Service 1 -->
                 <a href="https://mylead.global/r/bW6oEg" 
                    target="_blank" 
                    rel="nofollow noopener"
-                   class="service-card block rounded-2xl overflow-hidden card-glow bg-slate-800/60 backdrop-blur-md border border-slate-700/50 animate-fade-in"
+                   class="service-card block rounded-3xl overflow-hidden card-glow bg-[rgba(28,28,30,0.8)] border border-[rgba(255,255,255,0.1)] animate-fade-in"
                    style="animation-delay: 0.3s;">
-                    <div class="p-5 sm:p-6">
-                        <div class="relative overflow-hidden rounded-xl">
+                    <div class="p-6 sm:p-8">
+                        <div class="relative overflow-hidden rounded-2xl">
                             <img src="https://mylead.global/s/bW6oEg/lejRej.png" 
                                  alt="Premium Service 1"
                                  loading="lazy"
                                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 1</span></div>';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                     </div>
                 </a>
@@ -317,15 +427,15 @@
                 <a href="https://mylead.global/r/bW6oEg" 
                    target="_blank" 
                    rel="nofollow noopener"
-                   class="service-card block rounded-2xl overflow-hidden card-glow bg-slate-800/60 backdrop-blur-md border border-slate-700/50 animate-fade-in"
+                   class="service-card block rounded-3xl overflow-hidden card-glow bg-[rgba(28,28,30,0.8)] border border-[rgba(255,255,255,0.1)] animate-fade-in"
                    style="animation-delay: 0.4s;">
-                    <div class="p-5 sm:p-6">
-                        <div class="relative overflow-hidden rounded-xl">
+                    <div class="p-6 sm:p-8">
+                        <div class="relative overflow-hidden rounded-2xl">
                             <img src="https://mylead.global/s/bW6oEg/vbmOeY.png" 
                                  alt="Premium Service 2"
                                  loading="lazy"
                                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 2</span></div>';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                     </div>
                 </a>
@@ -334,15 +444,15 @@
                 <a href="https://mylead.global/r/bW6oEg" 
                    target="_blank" 
                    rel="nofollow noopener"
-                   class="service-card block rounded-2xl overflow-hidden card-glow bg-slate-800/60 backdrop-blur-md border border-slate-700/50 animate-fade-in"
+                   class="service-card block rounded-3xl overflow-hidden card-glow bg-[rgba(28,28,30,0.8)] border border-[rgba(255,255,255,0.1)] animate-fade-in"
                    style="animation-delay: 0.5s;">
-                    <div class="p-5 sm:p-6">
-                        <div class="relative overflow-hidden rounded-xl">
+                    <div class="p-6 sm:p-8">
+                        <div class="relative overflow-hidden rounded-2xl">
                             <img src="https://mylead.global/s/bW6oEg/mbk5ez.png" 
                                  alt="Premium Service 3"
                                  loading="lazy"
                                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 3</span></div>';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                     </div>
                 </a>
@@ -351,15 +461,15 @@
                 <a href="https://mylead.global/r/bW6oEg" 
                    target="_blank" 
                    rel="nofollow noopener"
-                   class="service-card block rounded-2xl overflow-hidden card-glow bg-slate-800/60 backdrop-blur-md border border-slate-700/50 animate-fade-in"
+                   class="service-card block rounded-3xl overflow-hidden card-glow bg-[rgba(28,28,30,0.8)] border border-[rgba(255,255,255,0.1)] animate-fade-in"
                    style="animation-delay: 0.6s;">
-                    <div class="p-5 sm:p-6">
-                        <div class="relative overflow-hidden rounded-xl">
+                    <div class="p-6 sm:p-8">
+                        <div class="relative overflow-hidden rounded-2xl">
                             <img src="https://mylead.global/s/bW6oEg/penRe7.png" 
                                  alt="Premium Service 4"
                                  loading="lazy"
                                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 4</span></div>';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                     </div>
                 </a>
@@ -367,26 +477,26 @@
         </main>
 
         <!-- Footer -->
-        <footer class="text-center border-t border-slate-700/50 pt-10 sm:pt-12 animate-fade-in" style="animation-delay: 0.7s;">
-            <div class="mb-6">
-                <div class="footer-badge inline-block px-8 py-3 rounded-full">
-                    <p class="text-sm sm:text-base font-medium text-gray-300">
-                        <i class="fas fa-copyright mr-2 text-indigo-400"></i>
-                        <span id="year" class="font-semibold"></span> 
-                        <span class="mx-2 text-gray-500">•</span>
-                        <span class="gradient-text">Recommended Services</span>
-                        <span class="mx-2 text-gray-500">•</span>
-                        <i class="fas fa-heart text-red-400 mx-1"></i>
-                        <span class="text-gray-400">Curated with care</span>
+        <footer class="text-center border-t border-[rgba(255,255,255,0.1)] pt-12 sm:pt-16 animate-fade-in" style="animation-delay: 0.7s;">
+            <div class="mb-8">
+                <div class="footer-badge inline-block px-10 py-4 rounded-full">
+                    <p class="text-sm sm:text-base font-medium" style="color: var(--text-secondary); letter-spacing: -0.011em;">
+                        <i class="fas fa-copyright mr-3" style="color: #007AFF;"></i>
+                        <span id="year" class="font-semibold text-white"></span> 
+                        <span class="mx-3" style="color: var(--text-tertiary);">•</span>
+                        <span class="gradient-text font-semibold">Recommended Services</span>
+                        <span class="mx-3" style="color: var(--text-tertiary);">•</span>
+                        <i class="fas fa-heart mx-1" style="color: #FF2D55;"></i>
+                        <span style="color: var(--text-secondary);">Curated with care</span>
                     </p>
                 </div>
             </div>
-            <div class="flex items-center justify-center gap-2 text-xs sm:text-sm text-gray-500 mb-2">
-                <i class="fas fa-external-link-alt text-indigo-400"></i>
+            <div class="flex items-center justify-center gap-3 text-xs sm:text-sm mb-3" style="color: var(--text-tertiary); letter-spacing: -0.011em;">
+                <i class="fas fa-external-link-alt" style="color: #007AFF;"></i>
                 <span>All links open in a new tab for your convenience</span>
             </div>
-            <div class="flex items-center justify-center gap-2 text-xs text-gray-600 mt-4">
-                <i class="fas fa-shield-alt text-emerald-400"></i>
+            <div class="flex items-center justify-center gap-3 text-xs mt-6" style="color: var(--text-tertiary); letter-spacing: -0.011em;">
+                <i class="fas fa-shield-alt" style="color: #32D74B;"></i>
                 <span>Secure & Verified Services</span>
             </div>
         </footer>
