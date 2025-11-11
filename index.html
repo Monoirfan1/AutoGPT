@@ -1,83 +1,376 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A curated collection of professional services and tools">
-    <title>Recommended Services | Professional Tools & Services</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="A curated collection of premium services and tools">
+    <title>Recommended Services | Professional Tools &amp; Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-        
+        /* iOS 18 Design System - Ultra Premium */
         :root {
-            --primary-gradient: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
-            --secondary-gradient: linear-gradient(135deg, #FF2D55 0%, #FF3B30 100%);
-            --accent-gradient: linear-gradient(135deg, #32D74B 0%, #30D158 100%);
-            --dark-bg: #000000;
-            --surface-bg: rgba(28, 28, 30, 0.8);
-            --surface-elevated: rgba(44, 44, 46, 0.8);
-            --text-primary: #FFFFFF;
-            --text-secondary: rgba(255, 255, 255, 0.8);
-            --text-tertiary: rgba(255, 255, 255, 0.6);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --glow-color: rgba(0, 122, 255, 0.3);
+            /* iOS 18 Dark Mode Colors */
+            --color-black: #000000;
+            --color-bg-primary: rgb(0, 0, 0);
+            --color-bg-secondary: rgb(28, 28, 30);
+            --color-bg-tertiary: rgb(44, 44, 46);
+            --color-bg-elevated: rgb(58, 58, 60);
+            
+            /* iOS Text Colors */
+            --color-text-primary: rgba(255, 255, 255, 1);
+            --color-text-secondary: rgba(235, 235, 245, 0.6);
+            --color-text-tertiary: rgba(235, 235, 245, 0.3);
+            
+            /* iOS 18 System Accent Colors */
+            --color-blue: #0A84FF;
+            --color-green: #30D158;
+            --color-orange: #FF9F0A;
+            --color-red: #FF453A;
+            --color-purple: #BF5AF2;
+            --color-teal: #64D2FF;
+            --color-pink: #FF375F;
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(28, 28, 30, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-blur: blur(40px) saturate(180%);
+            
+            /* iOS Timing Function */
+            --ease-ios: cubic-bezier(0.28, 0.11, 0.32, 1);
+            
+            /* Spacing (8-point grid) */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-2xl: 64px;
+            
+            /* Border Radius */
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 24px;
+            --radius-pill: 100px;
         }
         
         * {
-            letter-spacing: -0.011em;
-            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Inter', system-ui, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+            font-size: 17px;
             font-weight: 400;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-            color: var(--text-primary);
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+            color: var(--color-text-primary);
+            background: var(--color-black);
+            min-height: 100vh;
             overflow-x: hidden;
         }
         
+        /* Sinhala Font */
+        .sinhala-text {
+            font-family: "Noto Sans Sinhala", -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+        
+        /* Background Pattern */
         .gradient-bg {
-            background: var(--dark-bg);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-black);
             background-image: 
-                radial-gradient(at 0% 0%, rgba(0, 122, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(88, 86, 214, 0.05) 0%, transparent 50%);
-            background-attachment: fixed;
+                radial-gradient(at 20% 10%, rgba(10, 132, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(at 80% 90%, rgba(191, 90, 242, 0.08) 0%, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(48, 209, 88, 0.04) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-blue), var(--color-purple));
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 20px var(--color-blue);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-sm);
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: var(--space-md);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                padding: var(--space-lg);
+            }
+        }
+        
+        /* Top Badge */
+        .top-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-pill);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-lg);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s var(--ease-ios) forwards;
+            opacity: 0;
+        }
+        
+        .top-badge i {
+            color: var(--color-green);
+            font-size: 14px;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            padding-top: var(--space-md);
+        }
+        
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--color-blue), var(--color-purple));
+            border-radius: 20px;
+            margin-bottom: var(--space-md);
+            box-shadow: 
+                0 12px 40px rgba(10, 132, 255, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            animation: fadeInScale 0.8s var(--ease-ios) 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .icon-wrapper i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.022em;
+            margin-bottom: var(--space-md);
+            animation: fadeInUp 0.8s var(--ease-ios) 0.3s forwards;
+            opacity: 0;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 64px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 72px;
+            }
         }
         
         .gradient-text {
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--color-blue), var(--color-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-weight: 700;
-            letter-spacing: -0.022em;
         }
         
-        .accent-text {
-            color: var(--text-secondary);
+        .subtitle-sinhala {
+            font-size: 20px;
+            margin-bottom: var(--space-sm);
+            color: var(--color-text-secondary);
+            animation: fadeInUp 0.8s var(--ease-ios) 0.4s forwards;
+            opacity: 0;
+        }
+        
+        @media (min-width: 768px) {
+            .subtitle-sinhala {
+                font-size: 24px;
+            }
+        }
+        
+        .divider {
+            width: 64px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--color-blue), var(--color-purple), transparent);
+            margin: var(--space-md) auto;
+            border-radius: 2px;
+            animation: fadeIn 0.8s var(--ease-ios) 0.5s forwards;
+            opacity: 0;
+        }
+        
+        .description {
+            max-width: 700px;
+            margin: 0 auto var(--space-md);
+            animation: fadeInUp 0.8s var(--ease-ios) 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .description p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        @media (min-width: 768px) {
+            .description p {
+                font-size: 18px;
+            }
+        }
+        
+        .description i {
+            margin-right: 10px;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin: var(--space-lg) auto;
+            max-width: 900px;
+            animation: fadeInUp 0.8s var(--ease-ios) 0.7s forwards;
+            opacity: 0;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
             font-weight: 500;
-            letter-spacing: -0.014em;
+            color: var(--color-text-primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s var(--ease-ios);
         }
         
-        .heading-font {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            line-height: 1.1;
+        .stat-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
         }
         
+        .stat-item i {
+            font-size: 16px;
+        }
+        
+        /* Services Section */
+        .services-section {
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-lg);
+            animation: fadeIn 0.8s var(--ease-ios) 0.8s forwards;
+            opacity: 0;
+        }
+        
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
+        }
+        
+        .section-title i {
+            color: var(--color-blue);
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+        }
+        
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Service Card */
         .service-card {
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
+            display: block;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            text-decoration: none;
             overflow: hidden;
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s var(--ease-ios);
+            animation: fadeInUp 0.8s var(--ease-ios) forwards;
+            opacity: 0;
         }
+        
+        .service-card:nth-child(1) { animation-delay: 0.9s; }
+        .service-card:nth-child(2) { animation-delay: 1.0s; }
+        .service-card:nth-child(3) { animation-delay: 1.1s; }
+        .service-card:nth-child(4) { animation-delay: 1.2s; }
         
         .service-card::before {
             content: '';
@@ -86,59 +379,119 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            background: radial-gradient(circle at center, rgba(10, 132, 255, 0.1), transparent 70%);
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.3s var(--ease-ios);
             pointer-events: none;
-            z-index: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 70px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.15),
+                0 0 40px rgba(10, 132, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
         }
         
         .service-card:hover::before {
             opacity: 1;
         }
         
-        .service-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 122, 255, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-        }
-        
-        .service-card:hover::after {
-            opacity: 1;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-12px) scale(1.015);
-            box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                0 0 40px rgba(0, 122, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        
         .service-card:active {
-            transform: translateY(-6px) scale(1.008);
-            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(-4px) scale(0.99);
+            transition: all 0.15s var(--ease-ios);
         }
         
+        .service-image-wrapper {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--color-bg-tertiary);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s var(--ease-ios), filter 0.3s var(--ease-ios);
+            filter: brightness(0.95);
+        }
+        
+        .service-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.02);
+        }
+        
+        /* Image Loading Skeleton */
+        .service-card img:not([src]) {
+            background: linear-gradient(
+                90deg,
+                var(--color-bg-secondary) 0%,
+                var(--color-bg-tertiary) 50%,
+                var(--color-bg-secondary) 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            min-height: 250px;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Hover Overlay */
+        .hover-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transform: translateY(100%);
+            transition: transform 0.3s var(--ease-ios);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .service-card:hover .hover-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Category Badge */
+        .category-badge {
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            padding: 6px 14px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            z-index: 2;
+        }
+        
+        /* Fallback Box */
         .fallback-box {
-            background: var(--surface-elevated);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 280px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
+            background: var(--color-bg-tertiary);
+            border-radius: 14px;
             position: relative;
             overflow: hidden;
         }
@@ -150,56 +503,183 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(0, 122, 255, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(10, 132, 255, 0.15), transparent 70%);
             animation: pulse 4s ease-in-out infinite;
         }
         
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 0.4; }
-            50% { transform: scale(1.15); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.7; }
         }
         
         .fallback-text {
-            color: var(--text-primary);
-            font-size: 1.125rem;
-            font-weight: 600;
-            letter-spacing: -0.014em;
             position: relative;
             z-index: 1;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text-primary);
         }
         
         .fallback-icon {
-            font-size: 1.5rem;
-            opacity: 0.8;
-            color: #007AFF;
+            font-size: 24px;
+            color: var(--color-blue);
         }
         
-        img {
-            border-radius: 18px;
-            width: 100%;
-            height: auto;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: block;
-            position: relative;
-            z-index: 0;
-        }
-        
-        .service-card:hover img {
-            transform: scale(1.03);
-        }
-        
-        .animate-fade-in {
-            animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: var(--space-lg);
+            text-align: center;
+            animation: fadeIn 0.8s var(--ease-ios) 1.3s forwards;
             opacity: 0;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s var(--ease-ios);
+        }
+        
+        .footer-link:hover {
+            color: var(--color-text-primary);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .footer-link i {
+            font-size: 14px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin: var(--space-md) 0;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: var(--color-text-secondary);
+            font-size: 18px;
+            transition: all 0.3s var(--ease-ios);
+            cursor: pointer;
+        }
+        
+        .social-icon:hover {
+            color: var(--color-text-primary);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px) scale(1.05);
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .trust-badge i {
+            font-size: 14px;
+        }
+        
+        .copyright {
+            display: inline-block;
+            padding: 14px 28px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-pill);
+            margin: var(--space-md) 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .copyright p {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .copyright .gradient-text {
+            font-weight: 600;
+        }
+        
+        .footer-note {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+            margin-top: var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -207,307 +687,319 @@
             }
         }
         
-        .icon-wrapper {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 64px;
-            height: 64px;
-            border-radius: 18px;
-            background: var(--surface-elevated);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid var(--border-color);
-            margin-bottom: 2rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .icon-wrapper:hover {
-            transform: scale(1.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.3);
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
         
-        .icon-wrapper i {
-            font-size: 1.75rem;
-        }
-        
-        .divider-line {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            border-radius: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .divider-line::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 122, 255, 0.6), transparent);
-            animation: shimmer 3s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        .footer-badge {
-            background: var(--surface-elevated);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .footer-badge:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
-        }
-        
-        .section-title {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-tertiary);
-            margin-bottom: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
-        }
-        
-        .card-glow {
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                0 0 0 1px var(--border-color);
-        }
-        
-        .card-glow:hover {
-            box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.2),
-                0 0 40px rgba(0, 122, 255, 0.2);
-        }
-        
-        /* Premium Typography Enhancements */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            letter-spacing: -0.022em;
-        }
-        
-        p {
-            letter-spacing: -0.011em;
-        }
-        
-        /* Enhanced Focus States */
-        a:focus-visible {
-            outline: 2px solid rgba(0, 122, 255, 0.6);
+        /* Accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--color-blue);
             outline-offset: 4px;
-            border-radius: 12px;
+            border-radius: var(--radius-sm);
         }
         
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Selection Styling */
         ::selection {
-            background: rgba(0, 122, 255, 0.3);
+            background: rgba(10, 132, 255, 0.3);
             color: white;
         }
         
-        ::-moz-selection {
-            background: rgba(0, 122, 255, 0.3);
-            color: white;
-        }
-        
-        /* Additional Premium Effects */
-        .service-card img {
-            filter: brightness(0.98);
-            transition: filter 0.5s ease;
-        }
-        
-        .service-card:hover img {
-            filter: brightness(1.05);
-        }
-        
-        @media (max-width: 768px) {
-            .heading-font {
-                font-size: 2.5rem;
-                letter-spacing: -0.02em;
+        /* Responsive Typography */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 40px;
             }
-            
             .icon-wrapper {
-                width: 56px;
-                height: 56px;
+                width: 64px;
+                height: 64px;
             }
-            
             .icon-wrapper i {
-                font-size: 1.5rem;
+                font-size: 28px;
             }
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen">
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Background -->
+    <div class="gradient-bg"></div>
+    
     <!-- Main Container -->
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 max-w-7xl">
+    <div class="container">
         <!-- Header Section -->
-        <header class="text-center mb-20 sm:mb-24 lg:mb-32 animate-fade-in">
-            <div class="flex justify-center mb-8">
-                <div class="icon-wrapper">
-                    <i class="fas fa-sparkles gradient-text"></i>
+        <header>
+            <!-- Top Badge -->
+            <div style="text-align: center;">
+                <div class="top-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Curated Collection</span>
                 </div>
             </div>
             
-            <h1 class="heading-font text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <!-- Icon -->
+            <div class="icon-wrapper">
+                <i class="fas fa-sparkles"></i>
+            </div>
+            
+            <!-- Title -->
+            <h1>
                 <span class="gradient-text">Recommended</span> Services
             </h1>
             
-            <p class="text-xl sm:text-2xl lg:text-3xl accent-text mb-8 font-medium">
-                <i class="fas fa-language mr-3" style="color: var(--text-tertiary);"></i>
+            <!-- Sinhala Subtitle -->
+            <p class="subtitle-sinhala sinhala-text">
+                <i class="fas fa-language" style="color: var(--color-text-tertiary);"></i>
                 මාගේ නිර්දේශිත සේවාවන්
             </p>
             
-            <div class="w-24 sm:w-32 h-px divider-line mx-auto mb-12"></div>
+            <!-- Divider -->
+            <div class="divider"></div>
             
-            <div class="max-w-3xl mx-auto space-y-4">
-                <p class="text-lg sm:text-xl text-white font-medium leading-relaxed" style="letter-spacing: -0.011em;">
-                    <i class="fas fa-check-circle mr-3" style="color: #32D74B;"></i>
+            <!-- Description -->
+            <div class="description">
+                <p>
+                    <i class="fas fa-check-circle" style="color: var(--color-green);"></i>
                     A curated collection of premium services and tools
                 </p>
-                <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary); letter-spacing: -0.011em;">
-                    <i class="fas fa-heart mr-3" style="color: #FF2D55;"></i>
+                <p class="sinhala-text">
+                    <i class="fas fa-heart" style="color: var(--color-pink);"></i>
                     මා විසින් ප්‍රයෝජනවත් යැයි සලකන සේවාවන් සහ මෙවලම් කිහිපයක්
                 </p>
             </div>
+            
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <i class="fas fa-check-circle" style="color: var(--color-blue);"></i>
+                    <span>4 Premium Services</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-shield-check" style="color: var(--color-green);"></i>
+                    <span>Verified &amp; Trusted</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock" style="color: var(--color-orange);"></i>
+                    <span>Updated 2025</span>
+                </div>
+            </div>
         </header>
-
-        <!-- Services Grid -->
-        <main class="mb-20 sm:mb-24">
-            <div class="section-title animate-fade-in" style="animation-delay: 0.2s;">
-                <i class="fas fa-th-large" style="color: #007AFF;"></i>
+        
+        <!-- Services Section -->
+        <main class="services-section">
+            <div class="section-title">
+                <i class="fas fa-th-large"></i>
                 <span>Featured Services</span>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+            <div class="services-grid">
                 <!-- Service 1 -->
                 <a href="https://mylead.global/r/bW6oEg" 
                    target="_blank" 
                    rel="nofollow noopener"
-                   class="service-card block rounded-3xl overflow-hidden card-glow bg-[rgba(28,28,30,0.8)] border border-[rgba(255,255,255,0.1)] animate-fade-in"
-                   style="animation-delay: 0.3s;">
-                    <div class="p-6 sm:p-8">
-                        <div class="relative overflow-hidden rounded-2xl">
-                            <img src="https://mylead.global/s/bW6oEg/lejRej.png" 
-                                 alt="Premium Service 1"
-                                 loading="lazy"
-                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 1</span></div>';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                   class="service-card">
+                    <div class="category-badge" style="background: linear-gradient(135deg, rgba(10, 132, 255, 0.3), rgba(10, 132, 255, 0.1));">
+                        Affiliate
+                    </div>
+                    <div class="service-image-wrapper">
+                        <img src="https://mylead.global/s/bW6oEg/lejRej.png" 
+                             alt="Premium Service 1"
+                             loading="lazy"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 1</span></div>';">
+                        <div class="hover-overlay">
+                            <span>Click to visit</span>
+                            <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </a>
-
+                
                 <!-- Service 2 -->
                 <a href="https://mylead.global/r/bW6oEg" 
                    target="_blank" 
                    rel="nofollow noopener"
-                   class="service-card block rounded-3xl overflow-hidden card-glow bg-[rgba(28,28,30,0.8)] border border-[rgba(255,255,255,0.1)] animate-fade-in"
-                   style="animation-delay: 0.4s;">
-                    <div class="p-6 sm:p-8">
-                        <div class="relative overflow-hidden rounded-2xl">
-                            <img src="https://mylead.global/s/bW6oEg/vbmOeY.png" 
-                                 alt="Premium Service 2"
-                                 loading="lazy"
-                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 2</span></div>';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                   class="service-card">
+                    <div class="category-badge" style="background: linear-gradient(135deg, rgba(191, 90, 242, 0.3), rgba(191, 90, 242, 0.1));">
+                        Premium
+                    </div>
+                    <div class="service-image-wrapper">
+                        <img src="https://mylead.global/s/bW6oEg/vbmOeY.png" 
+                             alt="Premium Service 2"
+                             loading="lazy"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 2</span></div>';">
+                        <div class="hover-overlay">
+                            <span>Click to visit</span>
+                            <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </a>
-
+                
                 <!-- Service 3 -->
                 <a href="https://mylead.global/r/bW6oEg" 
                    target="_blank" 
                    rel="nofollow noopener"
-                   class="service-card block rounded-3xl overflow-hidden card-glow bg-[rgba(28,28,30,0.8)] border border-[rgba(255,255,255,0.1)] animate-fade-in"
-                   style="animation-delay: 0.5s;">
-                    <div class="p-6 sm:p-8">
-                        <div class="relative overflow-hidden rounded-2xl">
-                            <img src="https://mylead.global/s/bW6oEg/mbk5ez.png" 
-                                 alt="Premium Service 3"
-                                 loading="lazy"
-                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 3</span></div>';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                   class="service-card">
+                    <div class="category-badge" style="background: linear-gradient(135deg, rgba(48, 209, 88, 0.3), rgba(48, 209, 88, 0.1));">
+                        Trusted
+                    </div>
+                    <div class="service-image-wrapper">
+                        <img src="https://mylead.global/s/bW6oEg/mbk5ez.png" 
+                             alt="Premium Service 3"
+                             loading="lazy"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 3</span></div>';">
+                        <div class="hover-overlay">
+                            <span>Click to visit</span>
+                            <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </a>
-
+                
                 <!-- Service 4 -->
                 <a href="https://mylead.global/r/bW6oEg" 
                    target="_blank" 
                    rel="nofollow noopener"
-                   class="service-card block rounded-3xl overflow-hidden card-glow bg-[rgba(28,28,30,0.8)] border border-[rgba(255,255,255,0.1)] animate-fade-in"
-                   style="animation-delay: 0.6s;">
-                    <div class="p-6 sm:p-8">
-                        <div class="relative overflow-hidden rounded-2xl">
-                            <img src="https://mylead.global/s/bW6oEg/penRe7.png" 
-                                 alt="Premium Service 4"
-                                 loading="lazy"
-                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 4</span></div>';">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                   class="service-card">
+                    <div class="category-badge" style="background: linear-gradient(135deg, rgba(255, 159, 10, 0.3), rgba(255, 159, 10, 0.1));">
+                        Featured
+                    </div>
+                    <div class="service-image-wrapper">
+                        <img src="https://mylead.global/s/bW6oEg/penRe7.png" 
+                             alt="Premium Service 4"
+                             loading="lazy"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-box\'><span class=\'fallback-text\'><i class=\'fas fa-external-link-alt fallback-icon\'></i>Visit Premium Service 4</span></div>';">
+                        <div class="hover-overlay">
+                            <span>Click to visit</span>
+                            <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </a>
             </div>
         </main>
-
+        
         <!-- Footer -->
-        <footer class="text-center border-t border-[rgba(255,255,255,0.1)] pt-12 sm:pt-16 animate-fade-in" style="animation-delay: 0.7s;">
-            <div class="mb-8">
-                <div class="footer-badge inline-block px-10 py-4 rounded-full">
-                    <p class="text-sm sm:text-base font-medium" style="color: var(--text-secondary); letter-spacing: -0.011em;">
-                        <i class="fas fa-copyright mr-3" style="color: #007AFF;"></i>
-                        <span id="year" class="font-semibold text-white"></span> 
-                        <span class="mx-3" style="color: var(--text-tertiary);">•</span>
-                        <span class="gradient-text font-semibold">Recommended Services</span>
-                        <span class="mx-3" style="color: var(--text-tertiary);">•</span>
-                        <i class="fas fa-heart mx-1" style="color: #FF2D55;"></i>
-                        <span style="color: var(--text-secondary);">Curated with care</span>
-                    </p>
+        <footer>
+            <!-- Footer Links -->
+            <div class="footer-links">
+                <a href="#" class="footer-link">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+                <a href="#" class="footer-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+                <a href="#" class="footer-link">
+                    <i class="fas fa-lock"></i>
+                    <span>Privacy</span>
+                </a>
+            </div>
+            
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <div class="social-icon" role="button" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </div>
+                <div class="social-icon" role="button" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-icon" role="button" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="social-icon" role="button" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
                 </div>
             </div>
-            <div class="flex items-center justify-center gap-3 text-xs sm:text-sm mb-3" style="color: var(--text-tertiary); letter-spacing: -0.011em;">
-                <i class="fas fa-external-link-alt" style="color: #007AFF;"></i>
-                <span>All links open in a new tab for your convenience</span>
+            
+            <!-- Trust Badges -->
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt" style="color: var(--color-green);"></i>
+                    <span>Secure Links</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-certificate" style="color: var(--color-blue);"></i>
+                    <span>Verified Services</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-calendar-check" style="color: var(--color-orange);"></i>
+                    <span>2025 Updated</span>
+                </div>
             </div>
-            <div class="flex items-center justify-center gap-3 text-xs mt-6" style="color: var(--text-tertiary); letter-spacing: -0.011em;">
-                <i class="fas fa-shield-alt" style="color: #32D74B;"></i>
-                <span>Secure & Verified Services</span>
+            
+            <!-- Copyright -->
+            <div class="copyright">
+                <p>
+                    <i class="fas fa-copyright" style="color: var(--color-blue);"></i>
+                    <span id="year"></span>
+                    <span style="color: var(--color-text-tertiary);">•</span>
+                    <span class="gradient-text">Recommended Services</span>
+                    <span style="color: var(--color-text-tertiary);">•</span>
+                    <i class="fas fa-heart" style="color: var(--color-pink);"></i>
+                    <span>Curated with care</span>
+                </p>
+            </div>
+            
+            <!-- Footer Note -->
+            <div class="footer-note">
+                <i class="fas fa-external-link-alt" style="color: var(--color-blue);"></i>
+                <span>All links open in a new tab for your convenience</span>
             </div>
         </footer>
     </div>
-
+    
     <script>
         // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
         
-        // Enhanced staggered animation for service cards
-        const cards = document.querySelectorAll('.service-card');
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercentage + '%';
+        });
+        
+        // Image Loading Enhancement
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.5s ease';
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+        });
+        
+        // Service Card Haptic Feedback Simulation
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Intersection Observer for Animation
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -522,23 +1014,9 @@
             });
         }, observerOptions);
         
-        cards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-            observer.observe(card);
-        });
-        
-        // Smooth scroll behavior
-        document.documentElement.style.scrollBehavior = 'smooth';
-        
-        // Add loading state management
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            img.addEventListener('load', function() {
-                this.style.opacity = '1';
-            });
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.3s ease';
-        });
+        // Observe all animated elements
+        const animatedElements = document.querySelectorAll('.service-card, .stat-item, .trust-badge');
+        animatedElements.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
